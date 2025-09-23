@@ -34,6 +34,7 @@ canvas.addEventListener("touchstart", e => {
   mouse.x = t.clientX - canvas.getBoundingClientRect().left;
   mouse.y = t.clientY - canvas.getBoundingClientRect().top;
   mouse.held[0] = true;
+  e.preventDefault();
 });
 
 canvas.addEventListener("mousemove", e => {
@@ -47,9 +48,11 @@ canvas.addEventListener("touchmove", e => {
   const rect = canvas.getBoundingClientRect();
   mouse.x = touch.clientX - rect.left;
   mouse.y = touch.clientY - rect.top;
+  e.preventDefault();
 });
 canvas.addEventListener("touchend", e => {
   mouse.held[0] = false;
+  e.preventDefault();
 });
 
 canvas.addEventListener("mousedown", e => mouse.held[e.button] = true);
