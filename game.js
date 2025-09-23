@@ -35,6 +35,18 @@ canvas.addEventListener("mousemove", e => {
   mouse.y = e.clientY - rect.top;
 });
 
+canvas.addEventListener("touchmove", e => {
+  let touch = e.touches[0];
+  const rect = canvas.getBoundingClientRect();
+  mouse.x = touch.clientX - rect.left;
+  mouse.y = touch.clientY - rect.top;
+  e.preventDefault();
+});
+canvas.addEventListener("touchend", e => {
+  mouse.held[0] = false;
+  e.preventDefault();
+});
+
 canvas.addEventListener("mousedown", e => mouse.held[e.button] = true);
 canvas.addEventListener("mouseup", e => mouse.held[e.button] = false);
 
