@@ -29,6 +29,13 @@ function draw_circle(x, y, radius, color) {
 document.addEventListener("keydown", e => keys[e.key] = true);
 document.addEventListener("keyup", e => keys[e.key] = false);
 
+canvas.addEventListener("touchstart", e => {
+  let t = e.touches[0];
+  mouse.x = t.clientX - canvas.getBoundingClientRect().left;
+  mouse.y = t.clientY - canvas.getBoundingClientRect().top;
+  mouse.held[0] = true;
+});
+
 canvas.addEventListener("mousemove", e => {
   const rect = canvas.getBoundingClientRect();
   mouse.x = e.clientX - rect.left;
@@ -40,11 +47,9 @@ canvas.addEventListener("touchmove", e => {
   const rect = canvas.getBoundingClientRect();
   mouse.x = touch.clientX - rect.left;
   mouse.y = touch.clientY - rect.top;
-  e.preventDefault();
 });
 canvas.addEventListener("touchend", e => {
   mouse.held[0] = false;
-  e.preventDefault();
 });
 
 canvas.addEventListener("mousedown", e => mouse.held[e.button] = true);
