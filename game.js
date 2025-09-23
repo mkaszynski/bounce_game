@@ -59,12 +59,12 @@ function loop() {
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
 
-  if (posy < 0 && !infinite) {
-    posy = 1;
+  if (posy < 10 && !infinite) {
+    posy = 11;
     vely *= -0.5;
   }
-  if (posy > 580 && !infinite) {
-    posy = 581;
+  if (posy > 589 && !infinite) {
+    posy = 590;
     vely *= -0.5;
     velx *= 0.9;
     CanJump = true
@@ -82,27 +82,27 @@ function loop() {
     };
   };
   
-  if (keys["a"]) {
+  if (keys["a"] || (mouse.held[0] && mouse.x < posx)) {
     velx += -0.2;
   }
-  if (keys["d"]) {
+  if (keys["d"] || (mouse.held[0] && mouse.x > posx)) {
     velx += 0.2;
   }
   
-  if (keys["w"] && CanJump) {
+  if (CanJump && (keys["w"] || (mouse.held[0] && mouse.y < posy))) {
     vely += -7;
   }
-  if (keys["s"]) {
+  if (keys["s"] || (mouse.held[0] && mouse.y > posy)) {
     vely += 0.1;
   }
 
   if (!infinite) {
-    if (posx < 0) {
-      posx = 0;
+    if (posx < 10) {
+      posx = 10;
       velx *= -0.5
     }
-    if (posx > 1180) {
-      posx = 1180;
+    if (posx > 1190) {
+      posx = 1190;
       velx *= -0.5
     }
   }
