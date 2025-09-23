@@ -145,9 +145,9 @@ function loop() {
   //ctx.fillRect(posx, posy, 20, 20);
 
   if (infinite) {
-    draw_circle(600, 300, 10, "rgb(255, 255, 0)");
+    draw_circle(600, 300, 10, "rgb(255, 0, 0)");
   } else {
-    draw_circle(posx, posy, 10, "rgb(255, 255, 0)");
+    draw_circle(posx, posy, 10, "rgb(255, 0, 0)");
   }
 
   requestAnimationFrame(loop);
